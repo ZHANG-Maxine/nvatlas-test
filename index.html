@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NV Atlas explores how English nominal expressions become Chinese verbs in a 500-pair subtitle corpus.">
+  <title>NV Atlas | English nouns, Chinese verbs</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="NV Atlas home">
+      <span class="brand-mark">NV</span>
+      <span>NV Atlas<small>Nominal / verbal pathways</small></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="index.html#explore" data-en="Explore" data-zh="探索">Explore</a>
+      <a href="network.html" data-en="Network" data-zh="詞語網絡">Network</a>
+      <a href="treemap.html" data-en="Treemap" data-zh="矩形圖">Treemap</a>
+      <a href="index.html#codebook" data-en="Codebook" data-zh="分類準則">Codebook</a>
+      <a href="index.html#report" data-en="Learning report" data-zh="學習報告">Learning report</a>
+      <a href="index.html#ai-use" data-en="AI use" data-zh="AI 使用">AI use</a>
+      <select class="lang-switch" id="langSwitch" aria-label="Interface language">
+        <option value="en">English</option>
+        <option value="zh">繁體中文</option>
+      </select>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" id="home">
+      <p class="eyebrow">
+        <span class="en">Translation Technology in the Age of AI · 2026R1</span>
+        <span class="zh">人工智能時代的翻譯科技 · 2026R1</span>
+      </p>
+      <h1>
+        <span class="en">When English nouns<br>become <span class="accent">Chinese verbs.</span></span>
+        <span class="zh">當英文名詞<br>化成<span class="accent">中文動詞。</span></span>
+      </h1>
+      <p class="lede en">An exploratory atlas of nominal-to-verbal translation shifts in a 500-pair English–Chinese subtitle corpus. Search the evidence, trace the patterns, and test the categories.</p>
+      <p class="lede zh">這是一個探索英文名詞在英譯中字幕裏轉為中文動詞的語料網站。你可以搜尋例證、追蹤模式，並檢視分類是否站得住腳。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#explore"><span class="en">Explore the corpus</span><span class="zh">探索語料</span></a>
+        <a class="button secondary" href="#report"><span class="en">Read the report</span><span class="zh">閱讀報告</span></a>
+      </div>
+      <div class="hero-metrics" aria-label="Corpus summary">
+        <div class="metric"><strong id="heroTotal">500</strong><span class="en">sentence pairs</span><span class="zh">句對</span></div>
+        <div class="metric"><strong id="heroNominals">—</strong><span class="en">English nominals</span><span class="zh">英文名詞</span></div>
+        <div class="metric"><strong>4</strong><span class="en">analysis categories</span><span class="zh">分析類別</span></div>
+        <div class="metric"><strong id="heroChecked">0</strong><span class="en">human-checked</span><span class="zh">人工核對</span></div>
+      </div>
+      <div class="alert">
+        <span class="en"><strong>Data note:</strong> the supplied CSV has no upstream URL, corpus version, or sampling seed. The site records these gaps openly rather than inventing provenance.</span>
+        <span class="zh"><strong>資料說明：</strong>現有 CSV 沒有上游網址、語料版本或抽樣種子。本網站如實標示這些缺口，不虛構出處。</span>
+      </div>
+    </section>
+
+    <section class="page-section" id="explore">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <span class="section-number">01 · Explorer</span>
+            <h2><span class="en">Read through the shifts.</span><span class="zh">逐條閱讀轉換。</span></h2>
+          </div>
+          <p class="en">Search both languages, filter the categories, and select any term to carry the same query into every view. The URL stores the complete view state.</p>
+          <p class="zh">同時搜尋兩種語言、篩選類別；點選任何詞語，會把同一搜尋條件帶到所有圖表。網址會保留完整檢視狀態。</p>
+        </div>
+
+        <div class="filters panel" aria-label="Corpus filters">
+          <label class="field">
+            <span class="en">Search English, Chinese, or a term</span>
+            <span class="zh">搜尋英文、中文或詞語</span>
+            <span class="search-box"><input id="search" type="search" autocomplete="off" placeholder="Try: attention, 注意, permission..." aria-label="Search the corpus"></span>
+          </label>
+          <label class="field">
+            <span class="en">Category</span><span class="zh">類別</span>
+            <select id="categoryFilter" aria-label="Filter by category">
+              <option value=""><span></span>All categories</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="en">Human checked</span><span class="zh">人工核對</span>
+            <select id="checkedFilter" aria-label="Filter by human checked status">
+              <option value="">All review states</option>
+              <option value="yes">Checked: yes</option>
+              <option value="no">Checked: no</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="en">Duplicate pairs</span><span class="zh">重複句對</span>
+            <select id="duplicateFilter" aria-label="Filter duplicate sentence pairs">
+              <option value="">Include duplicates</option>
+              <option value="hide">Hide exact duplicates</option>
+            </select>
+          </label>
+          <div class="filter-actions">
+            <button class="button quiet" id="shareView" type="button"><span class="en">Copy view link</span><span class="zh">複製檢視連結</span></button>
+            <button class="button quiet" id="clearFilters" type="button"><span class="en">Clear</span><span class="zh">清除</span></button>
+          </div>
+        </div>
+
+        <div class="result-bar panel" aria-live="polite">
+          <div><strong id="resultCount">—</strong> <span class="en">matching pairs</span><span class="zh">筆符合資料</span></div>
+          <div class="active-chips" id="activeChips"></div>
+        </div>
+
+        <div class="viz-page-links">
+          <a class="viz-page-card" href="network.html">
+            <span class="tag">Relational</span>
+            <strong><span class="en">Open the nominal–verb network</span><span class="zh">開啟名詞—動詞網絡</span></strong>
+            <span class="en">Explore recurring links in a dedicated full-page graph.</span><span class="zh">在獨立頁面探索重複出現的連結。</span>
+          </a>
+          <a class="viz-page-card" href="treemap.html">
+            <span class="tag">Hierarchical</span>
+            <strong><span class="en">Open the category treemap</span><span class="zh">開啟類別矩形圖</span></strong>
+            <span class="en">Compare the internal composition of each category.</span><span class="zh">比較各類別內部的構成。</span>
+          </a>
+        </div>
+
+        <div class="viz-grid">
+          <article class="panel viz-card">
+            <div class="viz-head">
+              <h3><span class="en">1 · Keyword in context</span><span class="zh">1 · 詞語共現</span></h3>
+              <span class="tag">Lexical</span>
+            </div>
+            <p class="caption"><span class="en">How does the selected word behave across nearby English and Chinese context?</span><span class="zh">所選詞語在英文與中文上下文裏如何出現？</span></p>
+            <div class="viz-controls" id="termSuggestions" aria-label="Suggested terms"></div>
+            <div class="kwic" id="kwic"></div>
+          </article>
+
+          <article class="panel viz-card wide" id="results">
+            <div class="viz-head">
+              <h3><span class="en">2 · Evidence table</span><span class="zh">2 · 證據表</span></h3>
+              <button class="button quiet" id="exportCsv" type="button"><span class="en">Export filtered CSV</span><span class="zh">匯出篩選 CSV</span></button>
+            </div>
+            <p class="caption"><span class="en">Which concrete pairs support the pattern? Sort and inspect every field behind the charts.</span><span class="zh">哪些具體句對支持這個模式？在此排序並檢視圖表背後的每個欄位。</span></p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th><button data-sort="id">ID</button></th>
+                    <th><button data-sort="source_text">English source</button></th>
+                    <th><button data-sort="target_text">Chinese target</button></th>
+                    <th><button data-sort="category">Category</button></th>
+                    <th><button data-sort="key_term">Nominal → verb</button></th>
+                    <th><button data-sort="human_checked">Checked</button></th>
+                  </tr>
+                </thead>
+                <tbody id="corpusRows"></tbody>
+              </table>
+            </div>
+            <div class="table-foot">
+              <span id="pageSummary">—</span>
+              <div class="pager">
+                <button id="prevPage" type="button" aria-label="Previous page">←</button>
+                <span id="pageNumber">1 / 1</span>
+                <button id="nextPage" type="button" aria-label="Next page">→</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="category-overview" id="categoryOverview"></div>
+      </div>
+    </section>
+
+    <section class="page-section" id="codebook">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <span class="section-number">02 · Codebook</span>
+            <h2><span class="en">Four rules, one at a time.</span><span class="zh">四條判準，逐項應用。</span></h2>
+          </div>
+          <p class="en">The categories are applied in priority order. The definitions are an AI-assisted first draft that the student should revise and defend in their own words.</p>
+          <p class="zh">類別按優次套用。以下定義是 AI 協助的初稿，學生仍應以自己的文字改寫，並能在口頭報告中解釋。</p>
+        </div>
+        <div class="codebook-grid" id="codebookCards"></div>
+        <div class="callout" style="margin-top:1rem">
+          <strong class="en">Pilot log.</strong><strong class="zh">試編記錄。</strong>
+          <span class="en"> The initial 24-row rule test found that <em>attention</em> and <em>permission</em> behave as communicative/social acts rather than neutral event nouns; both therefore receive the communicative-act label before the direct-transposition rule is considered. No rule was changed after full coding began.</span>
+          <span class="zh">首 24 筆試編發現，<em>attention</em> 與 <em>permission</em> 更像交際或社會行為，而不是中性的事件名詞，因此會優先標為交際行為。全面編碼開始後未再改動規則。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="report">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <span class="section-number">03 · Learning report</span>
+            <h2><span class="en">The story behind the atlas.</span><span class="zh">語料地圖背後的故事。</span></h2>
+          </div>
+          <p class="en">This report follows the required sequence: origin, background, gap, questions, method, analysis, conclusion, and reflection.</p>
+          <p class="zh">本報告依指定順序撰寫：緣起、背景、缺口、問題、方法、分析、結論與反思。</p>
+        </div>
+        <div class="report-layout">
+          <aside class="report-nav" aria-label="Report sections">
+            <a href="#origin">Origin</a><a href="#background">Background</a><a href="#gap">Gap</a><a href="#questions">Questions</a>
+            <a href="#method">Method</a><a href="#analysis">Analysis</a><a href="#conclusion">Conclusion</a><a href="#reflection">Reflection</a>
+          </aside>
+          <div class="report-body">
+            <section id="origin">
+              <h3>1. Origin</h3>
+              <p class="en">I chose this topic because Google Translate often turns an English noun into a Chinese verb. For example, <em>What is his obsession with you?</em> becomes「他咋對你這麼癡迷？」: the noun <em>obsession</em> reappears as the verb 癡迷. This small mismatch is a useful window on what translators prioritize when they move a line from English into Chinese.</p>
+              <p class="zh">我選擇這個題目，是因為 Google 翻譯經常把英文名詞化成中文動詞。例如 <em>What is his obsession with you?</em> 變成「他咋對你這麼癡迷？」：名詞 <em>obsession</em> 在譯文裏變成動詞「癡迷」。這個細微差異讓我們能觀察譯者在英譯中時如何取捨。</p>
+            </section>
+            <section id="background">
+              <h3>2. Background</h3>
+              <p class="en">English commonly packages an event or state as a noun, while Chinese can make the same information more directly predicative. Translation studies describes such shifts through transposition and grammatical metaphor. Subtitle pairs are especially useful because the source and target sit side by side and the language is compact.</p>
+              <p class="zh">英文常用名詞承載事件或狀態，而中文可以把相同資訊更直接地放在謂語位置。翻譯研究以「詞性轉換」和「語法隱喻」解釋這些變化。字幕句對特別適合研究，因為原文與譯文緊密並排，語言也傾向精簡。</p>
+            </section>
+            <section id="gap">
+              <h3>3. Gap</h3>
+              <p class="en">A list of isolated examples shows that noun-to-verb shifts exist but not how often they occur, which verbs recur, or whether the pattern differs across social acts, states, and events. The supplied corpus also lacks documented upstream provenance and independent human checking, so the current system exposes those gaps instead of presenting the data as validated.</p>
+              <p class="zh">零散例子只能證明名詞轉動詞存在，卻不能顯示出現頻率、常見動詞，或交際行為、狀態與事件之間是否有差異。現有語料亦缺乏清楚的上游出處與獨立人工核對，因此本系統公開展示這些限制，而不把資料說成已驗證。</p>
+            </section>
+            <section id="questions">
+              <h3>4. Questions</h3>
+              <ol class="en"><li>Which English nominals recur most often, and which Chinese verbs do they map to?</li><li>Do communicative acts cluster more tightly than event or state nouns?</li><li>How much of the corpus follows a direct noun-to-verb translation rule rather than contextual recasting?</li></ol>
+              <ol class="zh"><li>哪些英文名詞最常出現？它們連向哪些中文動詞？</li><li>交際行為的譯法是否比事件或狀態名詞更集中？</li><li>多少資料可直接以詞性轉換解釋，多少需要按語境重寫？</li></ol>
+            </section>
+            <section id="method">
+              <h3>5. Method</h3>
+              <p class="en">I received 500 aligned entries with five original fields: ID, English, Chinese, English_Nominal, and Chinese_Verb. The site preserves all 500 rows and five fields. The original row ID becomes part of the source trail. The browser converts the CSV into the brief's required fields without altering the texts.</p>
+              <p class="zh">我收到 500 筆對齊資料，原始欄位為 ID、English、Chinese、English_Nominal 與 Chinese_Verb。網站保留全部 500 列和五個原始欄位，並把原始列號納入出處紀錄。瀏覽器只在載入時轉換成作業要求的欄位，不改動原文。</p>
+              <div class="callout" style="margin:1rem 0">
+                <span class="en"><strong>Reproducibility record:</strong> 500 records; 195 distinct English nominals; 7 exact duplicate sentence-pair groups involving 15 rows, of which 8 are removable copies; no sampling seed supplied; no upstream URL/version supplied; 0 records marked human_checked=yes.</span>
+                <span class="zh"><strong>可重現紀錄：</strong>500 筆資料、195 個不同英文名詞、7 組完全重複句對（共涉及 15 列，其中 8 列是可移除的重複副本）；原檔沒有提供抽樣種子、上游網址或版本；目前 0 筆標為 human_checked=yes。</span>
+              </div>
+              <p class="en">The rule order is: state/experience, communicative act, direct transposition, then contextual recasting. This priority prevents one entry from being counted twice. The duplicate filter removes 8 repeated copies while keeping one representative of each pair, leaving 492 unique textual pairs and making the 500-entry issue visible.</p>
+              <p class="zh">規則依次為：狀態／經驗、交際行為、直接詞性轉換、語境重寫。這個優次避免同一筆被重複計入。重複篩選會移除 8 個重複副本，同時保留每組一個代表，剩下 492 組不同文本，顯示「500 筆」與去重後數量的差距。</p>
+              <p class="en"><strong>Outstanding quality check:</strong> at least 50 rows must be compared with the original source and edited by the student. This cannot be certified from the local CSV alone because it contains neither the upstream location nor the source snapshot.</p>
+              <p class="zh"><strong>尚待完成的人工檢查：</strong>學生須至少拿 50 筆資料與原始來源逐條比對。由於本機 CSV 沒有上游位置或原始快照，單憑這個檔案不能證實那些核對已經完成。</p>
+              <p class="en">The review queue below is selected reproducibly with seed 2026. Export it, compare each row with the upstream source, and replace <code>human_checked</code> with <code>yes</code> only after verification.</p>
+              <p class="zh">以下核對隊列以種子 2026 可重現地抽樣。請匯出後逐筆與原始來源比較，只有真正完成核對的資料才可把 <code>human_checked</code> 改為 <code>yes</code>。</p>
+              <button class="button secondary" id="reviewExport" type="button" data-en="Export 50-row review queue" data-zh="匯出 50 筆核對隊列">Export 50-row review queue</button>
+            </section>
+            <section id="analysis">
+              <h3>6. Analysis</h3>
+              <p class="en">The four linked views answer different parts of the same question. The <strong>Nominal–verb network</strong> shows concentration and recurring pairings; the <strong>Category treemap</strong> compares internal composition; the <strong>Keyword-in-context viewer</strong> restores evidence to its surrounding sentence; and the <strong>Evidence table</strong> supports sortable, row-level checking.</p>
+              <p class="zh">四個互相連動的檢視回答同一問題的不同面向：<strong>名詞—動詞網絡</strong>顯示集中程度與重複連結；<strong>類別矩形圖</strong>比較類別內部構成；<strong>詞語共現</strong>把詞放回句子的上下文中；<strong>證據表</strong>則支援可排序的逐列核對。</p>
+              <div class="report-chart" id="reportChart" aria-label="Category distribution chart"></div>
+              <p class="en">The chart is calculated from the same filtered records as the explorer. Its total must equal the evidence table count. Clicking a bar carries that category into the interactive views.</p>
+              <p class="zh">圖表與探索頁使用相同的篩選資料，各類別總和必須等於證據表筆數。點擊長條會把該類別帶入互動圖表。</p>
+            </section>
+            <section id="conclusion">
+              <h3>7. Conclusion</h3>
+              <p class="en">The prototype makes a qualitative translation observation inspectable: a visitor can move from a recurring English nominal, through a Chinese verb, into the exact subtitle pair and back into the category scheme. It also makes data defects visible, especially duplicates, missing provenance, and the absence of verified rows.</p>
+              <p class="zh">這個原型把質性的翻譯觀察變成可檢查的系統：訪客可以由常見英文名詞、連到中文動詞、再回到實際句對與分類準則。系統同時公開資料問題，尤其是重複句、缺乏出處，以及尚未核對的資料。</p>
+            </section>
+            <section id="reflection">
+              <h3>8. Reflection</h3>
+              <p class="en">The difficult part was not drawing a network; it was deciding what counted as the same kind of shift. Priority rules made the coding reproducible but also hid ambiguity at category boundaries. With more time I would obtain the upstream corpus, verify 50 rows against it, replace the mechanical human_check field with a dated review log, and test the codebook on a second annotator.</p>
+              <p class="zh">最困難的不是畫網絡圖，而是判斷哪些轉換真的屬於同一類。優次規則令編碼可重現，但也掩蓋類別交界處的模糊性。若有更多時間，我會取得上游語料、核對至少 50 筆、以帶日期的核對紀錄取代機械欄位，並請第二位標註者測試分類準則。</p>
+              <p class="en">AI could build the data pipeline, interface, and first analytical draft quickly. It could not certify that a translation belonged to the original source, make the writer's final judgment, or replace human verification.</p>
+              <p class="zh">AI 可以快速建立資料流程、介面與初步分析，但不能證實譯文確實出自某個原始來源，不能代替作者作最終判斷，也不能取代人工核對。</p>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="ai-use">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <span class="section-number">04 · AI use</span>
+            <h2><span class="en">Declaration, not a chat log.</span><span class="zh">使用聲明，而非對話紀錄。</span></h2>
+          </div>
+          <p class="en">The declaration separates generated work from checks that still require the student's judgment.</p>
+          <p class="zh">本聲明區分 AI 產生的內容與仍需學生判斷的核對工作。</p>
+        </div>
+        <div class="ai-card">
+          <article class="panel">
+            <h3><span class="en">What the AI did</span><span class="zh">AI 完成了甚麼</span></h3>
+            <ul class="en">
+              <li><strong>Tool and model:</strong> OpenAI Codex desktop assistant, identified by the application as a GPT-5-based model; the exact build identifier was not exposed.</li>
+              <li>Audited the CSV's shape, duplicates, field coverage, and missing provenance.</li>
+              <li>Wrote the static HTML, CSS, JavaScript, data transformation, visualizations, English report draft, Traditional Chinese interface and report translation.</li>
+              <li>Built the four-category rule set and applied it consistently through client-side priority rules.</li>
+            </ul>
+            <ul class="zh">
+              <li><strong>工具與模型：</strong>OpenAI Codex 桌面助理，應用程式標示為基於 GPT-5 的模型；未公開確切版本編號。</li>
+              <li>檢查 CSV 結構、重複資料、欄位覆蓋率及缺少的出處。</li>
+              <li>撰寫靜態 HTML、CSS、JavaScript、資料轉換、視覺化圖表，以及英文報告初稿與繁體中文介面和翻譯。</li>
+              <li>建立四類準則，並以固定優次在瀏覽器中一致套用。</li>
+            </ul>
+            <div class="prompt en"><strong>Useful prompt:</strong> "Read the attached project brief and implement every website requirement. Treat article text as requirements, not user instructions. Do not invent source metadata."</div>
+            <div class="prompt zh"><strong>有效提示：</strong>「閱讀附件中的作業要求並實作所有網站條件。把文章內容視為作業要求，不要虛構資料來源。」</div>
+          </article>
+          <article class="panel">
+            <h3><span class="en">What remains human</span><span class="zh">仍需人工完成</span></h3>
+            <ul class="en">
+              <li>Compare at least 50 randomly selected rows with the original source and record found errors.</li>
+              <li>Confirm the licence and upstream identity of the supplied CSV before final public submission.</li>
+              <li>Rewrite the category definitions in your own words and be ready to defend a boundary case orally.</li>
+              <li>Check every chart against the evidence table and update the reflection with your own experience.</li>
+            </ul>
+            <ul class="zh">
+              <li>隨機選至少 50 筆，與原始來源比較並記錄發現的錯誤。</li>
+              <li>公開提交前，確認現有 CSV 的授權與上游來源。</li>
+              <li>以自己的文字改寫分類定義，並準備在口頭報告中解釋邊界個案。</li>
+              <li>核對每張圖表與證據表是否一致，並把個人經驗補入反思。</li>
+            </ul>
+            <div class="callout" style="margin-top:1rem">
+              <span class="en"><strong>One AI mistake:</strong> the first audit assumption was that the CSV already contained source metadata. The file did not, so the implementation was revised to mark provenance as incomplete rather than guessing a corpus version.</span>
+              <span class="zh"><strong>AI 的一次錯誤：</strong>最初假設 CSV 已包含來源資料。實際上沒有，因此網站改為明確標示出處不完整，而沒有猜測語料版本。</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>NV Atlas · Translation Technology in the Age of AI · 2026R1</div>
+    <div><span class="en">Public corpus explorer and learning report.</span><span class="zh">公開語料探索器與學習報告。</span></div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

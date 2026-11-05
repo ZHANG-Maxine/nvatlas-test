@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare English nominal categories in the NV Atlas corpus with an interactive treemap.">
+  <title>Category treemap | NV Atlas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="treemap">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="NV Atlas home">
+      <span class="brand-mark">NV</span>
+      <span>NV Atlas<small>Nominal / verbal pathways</small></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="index.html#explore" data-en="Explore" data-zh="探索">Explore</a>
+      <a href="network.html" data-en="Network" data-zh="詞語網絡">Network</a>
+      <a href="treemap.html" data-en="Treemap" data-zh="矩形圖">Treemap</a>
+      <a href="index.html#codebook" data-en="Codebook" data-zh="分類準則">Codebook</a>
+      <a href="index.html#report" data-en="Learning report" data-zh="學習報告">Learning report</a>
+      <a href="index.html#ai-use" data-en="AI use" data-zh="AI 使用">AI use</a>
+      <select class="lang-switch" id="langSwitch" aria-label="Interface language">
+        <option value="en">English</option>
+        <option value="zh">繁體中文</option>
+      </select>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap visual-page">
+    <section class="visual-intro">
+      <a class="back-link" href="index.html#explore">← <span class="en">Back to corpus explorer</span><span class="zh">返回語料探索</span></a>
+      <p class="eyebrow"><span class="tag">Hierarchical</span></p>
+      <h1><span class="en">Category treemap</span><span class="zh">類別矩形圖</span></h1>
+      <p class="lede"><span class="en">Within each category, which English nominal expressions account for the greatest share of the filtered corpus?</span><span class="zh">在每個類別內，哪些英文名詞佔據最多資料？</span></p>
+    </section>
+
+    <div class="filters panel" aria-label="Corpus filters">
+      <label class="field">
+        <span class="en">Search English, Chinese, or a term</span><span class="zh">搜尋英文、中文或詞語</span>
+        <span class="search-box"><input id="search" type="search" autocomplete="off" aria-label="Search the corpus"></span>
+      </label>
+      <label class="field">
+        <span class="en">Category</span><span class="zh">類別</span>
+        <select id="categoryFilter" aria-label="Filter by category"><option value="">All categories</option></select>
+      </label>
+      <label class="field">
+        <span class="en">Human checked</span><span class="zh">人工核對</span>
+        <select id="checkedFilter" aria-label="Filter by human checked status"><option value="">All review states</option></select>
+      </label>
+      <label class="field">
+        <span class="en">Duplicate pairs</span><span class="zh">重複句對</span>
+        <select id="duplicateFilter" aria-label="Filter duplicate sentence pairs"><option value="">Include duplicates</option></select>
+      </label>
+      <div class="filter-actions">
+        <button class="button quiet" id="shareView" type="button"><span class="en">Copy view link</span><span class="zh">複製檢視連結</span></button>
+        <button class="button quiet" id="clearFilters" type="button"><span class="en">Clear</span><span class="zh">清除</span></button>
+      </div>
+    </div>
+
+    <div class="result-bar panel" aria-live="polite">
+      <div><strong id="resultCount">—</strong> <span class="en">matching pairs</span><span class="zh">筆符合資料</span></div>
+      <div class="active-chips" id="activeChips"></div>
+    </div>
+
+    <article class="panel viz-card dedicated">
+      <div class="viz-head">
+        <h2><span class="en">Compare category composition</span><span class="zh">比較類別構成</span></h2>
+        <span class="tag">Hierarchical</span>
+      </div>
+      <p class="caption"><span class="en">Rectangle area is the number of matching entries. Select a nominal expression to open its evidence in the search table.</span><span class="zh">矩形面積代表符合資料的筆數。點選英文名詞會在搜尋表開啟其證據。</span></p>
+      <svg id="treemap" class="treemap-svg" role="img" aria-label="Treemap of categories and nominal expressions"></svg>
+    </article>
+
+    <div class="related-links">
+      <a class="button secondary" href="network.html"><span class="en">Open nominal–verb network</span><span class="zh">開啟名詞—動詞網絡</span></a>
+      <a class="button secondary" href="index.html#explore"><span class="en">Open evidence table</span><span class="zh">開啟證據表</span></a>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div>NV Atlas · Translation Technology in the Age of AI · 2026R1</div></footer>
+  <script src="app.js"></script>
+</body>
+</html>
